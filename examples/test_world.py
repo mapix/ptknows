@@ -3,6 +3,7 @@
 import random
 import unittest
 
+
 class TestSequenceFunctionsWorld(unittest.TestCase):
 
     def setUp(self):
@@ -15,7 +16,7 @@ class TestSequenceFunctionsWorld(unittest.TestCase):
         self.assertEqual(self.seq, range(10))
 
         # should raise an exception for an immutable sequence
-        self.assertRaises(TypeError, random.shuffle, (1,2,3))
+        self.assertRaises(TypeError, random.shuffle, (1, 2, 3))
 
     def test_choice(self):
         element = random.choice(self.seq)
@@ -26,6 +27,7 @@ class TestSequenceFunctionsWorld(unittest.TestCase):
             random.sample(self.seq, 20)
         for element in random.sample(self.seq, 5):
             self.assertTrue(element in self.seq)
+
 
 if __name__ == '__main__':
     unittest.main()
