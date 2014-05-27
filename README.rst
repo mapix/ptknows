@@ -1,20 +1,5 @@
-(ptknows)➜  examples git:(master) ✗ py.test
-======================================================================================== test session starts =========================================================================================
-platform darwin -- Python 2.7.6 -- py-1.4.20 -- pytest-2.5.2
-plugins: ptknows
-collected 6 items
+=======
+ptknows
+=======
 
-test_hello.py ...
-test_world.py ...
-
-====================================================================================== 6 passed in 0.04 seconds ======================================================================================
-(ptknows)➜  examples git:(master) ✗ py.test
-======================================================================================== test session starts =========================================================================================
-platform darwin -- Python 2.7.6 -- py-1.4.20 -- pytest-2.5.2
-plugins: ptknows
-collected 6 items
-
-test_hello.py sss
-test_world.py sss
-
-===================================================================================== 6 skipped in 0.03 seconds ===================================================================================
+**ptknows** is a pytest plugin that can automaticly ``skip`` test case based on dependence info calculated by ``trace``.
