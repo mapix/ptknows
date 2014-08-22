@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='pytest-knows',
-    version='0.1.1',
+    version='0.1.2',
     author='mapix',
     author_email='mapix.me@gmail.com',
     py_modules=['ptknows'],
