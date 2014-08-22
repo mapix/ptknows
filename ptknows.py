@@ -2,9 +2,13 @@
 
 import os
 import trace
-import cPickle
 from pytest import skip
 from pkg_resources import get_distribution, DistributionNotFound
+
+try:
+    from cPickle import dumps, loads
+except ImportError:
+    from pickle import dumps, loads
 
 try:
     _dist = get_distribution('ptknows')
@@ -54,7 +58,7 @@ def pytest_runtest_call(item):
     if dep_info is None:
         skip_test = False
     else:
-        for filename, mtime in cPickle.loads(dep_info).iteritems():
+        for filename, mtime in loads(dep_info).iteritems():
             if mtime != get_file_mtime(filename):
                 skip_test = False
                 break
@@ -64,7 +68,7 @@ def pytest_runtest_call(item):
     tracer = trace.Trace(ignoredirs=(), trace=0, count=1)
     tracer.runctx('item.runtest()', globals=globals(), locals=locals())
     deps = {filename: get_file_mtime(filename) for filename, _ in tracer.results().counts.keys()}
-    GLOBALS.store[item.nodeid] = cPickle.dumps(deps)
+    GLOBALS.store[item.nodeid] = dumps(deps)
 
 
 def pytest_runtest_logreport(report):
